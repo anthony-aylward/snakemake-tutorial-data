@@ -6,11 +6,19 @@ This repository hosts the data needed for the [Snakemake tutorial](https://snake
 
 ---
 
-This fork adds the `plot-quals.py` script from the tutorial, and a modified version of the [tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html) `snakefile`. This snakefile adds a `conda: "environment.yaml"` parameter to each rule, so the workflow can be run without creating an external workflow-specific conda environment.
+This fork adds the `plot-quals.py` script from the tutorial, and a modified version of the [tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html) `snakefile`. This snakefile makes the following changes:
+* Adds a `conda: "environment.yaml"` parameter to each rule, so the workflow can be run without creating an external workflow-specific conda environment.
+* Includes the FASTA index for BWA in the input defenition for the `bwa_map` rule, as otherwise the index will be missing and cause a non-local run to fail.
+* Placess all output files within a single directory `output/`, for easier clean up after a test run.
 
-It also includes the FASTA index for BWA in the input defenition for the `bwa_map` rule, as otherwise the index will be missing and cause a non-local run to fail.
+## Clone repository
 
-It placess all output files within a single directory `output/`, for easier clean up after a test run.
+To start, clone this repository and navigate into it:
+
+```sh
+git clone https://github.com/anthony-aylward/snakemake-tutorial-data.git
+cd snakemake-tutorial-data
+```
 
 ## Local run
 
