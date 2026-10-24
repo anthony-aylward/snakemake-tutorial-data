@@ -8,6 +8,8 @@ rule all:
 
 rule bwa_map:
     conda: "environment.yaml"
+    threads: 2
+    resources: mem_mb=16_384
     input:
         genome="data/genome.fa",
         reads="data/samples/{sample}.fastq",
